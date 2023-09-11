@@ -12,6 +12,7 @@ const GuestRoutes = () => {
                 <Route path='/' element={<Home />} />
                 <Route path='/signup' element={<Signup />} />
                 <Route path='/login' element={<Login />} />
+                <Route path='*' element={<h1>404 not found</h1>} />
             </Route>
         </Routes>
     )

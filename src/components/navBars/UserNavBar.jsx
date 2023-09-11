@@ -13,6 +13,7 @@ const userNavBar = () => {
                     <Nav className="me-auto">
                         <Link className='text-white me-3 text-decoration-none' to="/">Home</Link>
                         <Link className='text-white me-3 text-decoration-none' to="/shopList">My shop list</Link>
+                        <Link className='text-white me-3 text-decoration-none' to="/logout">Logout</Link>
                     </Nav>
                 </Container>
             </Navbar>

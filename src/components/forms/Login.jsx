@@ -1,16 +1,22 @@
 import { If, useObjectState } from 'mg-js'
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { apiPost } from '../../services/apiRequest'
 import { LOGIN_URL } from '../../constant/urls'
+import UserContext from '../../context/userContext'
+import { json, useNavigate } from 'react-router-dom'
 
 const Login = () => {
     const [form, setForm] = useObjectState(["email", "password"])
     const [error, setError] = useState("")
-
+    const { setUser, user } = useContext(UserContext)
+    const nav = useNavigate()
     const login = async (e) => {
         e.preventDefault()
         try {
-            const resp = await apiPost(LOGIN_URL, form)
+            const { data } = await apiPost(LOGIN_URL, form)
+            setUser(data.user)
+            localStorage["x-api-key"] = data.token
+            nav("/");
         } catch (error) {
             if (error.response.status == 404) setError("user not found please signup")
             else if (error.response.status == 401) setError("wrong password")

@@ -5,7 +5,10 @@ const apiGet = async (url, data) => {
         const resp = await axios({
             method: "GET",
             url,
-            data
+            data,
+            headers: {
+                "x-api-key": localStorage.getItem("x-api-key")
+            }
         })
         return resp
     } catch (error) {
@@ -17,7 +20,10 @@ const apiPost = async (url, data) => {
         const resp = await axios({
             method: "POST",
             url,
-            data
+            data,
+            headers: {
+                "x-api-key": localStorage.getItem("x-api-key")
+            }
         })
         return resp
     } catch (error) {
@@ -29,7 +35,10 @@ const apiPut = async (url, data) => {
         const resp = await axios({
             method: "PUT",
             url,
-            data
+            data,
+            headers: {
+                "x-api-key": localStorage.getItem("x-api-key")
+            }
         })
         return resp
     } catch (error) {
@@ -41,7 +50,10 @@ const apiDelete = async (url, data) => {
         const resp = await axios({
             method: "DELETE",
             url,
-            data
+            data,
+            headers: {
+                "x-api-key": localStorage.getItem("x-api-key")
+            }
         })
         return resp
     } catch (error) {
